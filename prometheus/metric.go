@@ -18,7 +18,7 @@ import (
 	"time"
 
 	//lint:ignore SA1019 Need to keep deprecated package for compatibility.
-	"github.com/golang/protobuf/proto"
+	//"github.com/golang/protobuf/proto"
 	"github.com/prometheus/common/model"
 
 	dto "github.com/prometheus/client_model/go"
@@ -154,7 +154,7 @@ type timestampedMetric struct {
 
 func (m timestampedMetric) Write(pb *dto.Metric) error {
 	e := m.Metric.Write(pb)
-	pb.TimestampMs = proto.Int64(m.t.Unix()*1000 + int64(m.t.Nanosecond()/1000000))
+	pb.TimestampMs = nil
 	return e
 }
 
